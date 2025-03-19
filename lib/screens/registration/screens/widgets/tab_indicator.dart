@@ -8,20 +8,27 @@ class TabIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        totalTabs,
-            (index) => Container(
-          width: index == currentIndex ? 34 : 18,
-          height: 8,
-          margin: const EdgeInsets.symmetric(horizontal: 4),
-          decoration: BoxDecoration(
-            color: index == currentIndex ? const Color(0xFFD31F34) : Colors.grey,
-            borderRadius: BorderRadius.circular(8),
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            totalTabs,
+                (index) => AnimatedContainer(
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+              width: index == currentIndex ? 34 : 18,
+              height: 8,
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              decoration: BoxDecoration(
+                color: index == currentIndex ? const Color(0xFFD31F34) : const Color(0xFFD9D9D9),
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
           ),
         ),
-      ),
+        const SizedBox(height: 10),
+      ],
     );
   }
 }
