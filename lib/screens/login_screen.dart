@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'forgot_password_screen.dart';
+import 'package:campus_connect/screens/registration/screens/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -76,33 +77,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 hintStyle: textStyle,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Color(0xFF797979), // Default border color
-                  ),
+                  borderSide: const BorderSide(color: Color(0xFF797979)),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Color(
-                      0xFF797979,
-                    ), // Default border color when not focused
-                  ),
+                  borderSide: const BorderSide(color: Color(0xFF797979)),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Colors.black, // Border color when focused
-                  ),
+                  borderSide: const BorderSide(color: Colors.black),
                 ),
-                suffixIcon: const Icon(
-                  Icons.email_outlined,
-                  color: Color(0xFF797979), // Email icon color
-                  size: 24,
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 10,
-                ),
+                suffixIcon: const Icon(Icons.email_outlined, color: Color(0xFF797979), size: 24),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               ),
             ),
 
@@ -117,9 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const ForgotPasswordScreen(),
-                      ),
+                      MaterialPageRoute(builder: (context) => const ForgotPasswordScreen()),
                     );
                   },
                   child: const Text(
@@ -134,7 +118,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            // const SizedBox(height: 5),
             TextField(
               focusNode: _passwordFocusNode,
               obscureText: _obscureText,
@@ -143,30 +126,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 hintStyle: textStyle,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Color(0xFF797979), // Default border color
-                  ),
+                  borderSide: const BorderSide(color: Color(0xFF797979)),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Color(
-                      0xFF797979,
-                    ), // Default border color when not focused
-                  ),
+                  borderSide: const BorderSide(color: Color(0xFF797979)),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Colors.black, // Border color when focused
-                  ),
+                  borderSide: const BorderSide(color: Colors.black),
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(
-                    _obscureText
-                        ? Icons.lock_outline
-                        : Icons.visibility_outlined,
-                    color: Color(0xFF797979), // Email icon color
+                    _obscureText ? Icons.lock_outline : Icons.visibility_outlined,
+                    color: const Color(0xFF797979),
                   ),
                   onPressed: () {
                     setState(() {
@@ -174,18 +147,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                   },
                 ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 10,
-                ),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               ),
             ),
 
             const SizedBox(height: 20),
 
-            // Login Button
+            // Login Button (Navigates to Registration Screen)
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RegistrationScreen()),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF1D97D4),
                 minimumSize: const Size(360, 52),
@@ -201,11 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
             // Sign Up
             const Text(
               "Don’t have an account?",
-              style: TextStyle(
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
-              ),
+              style: TextStyle(fontFamily: 'Inter', fontWeight: FontWeight.w600, fontSize: 14),
             ),
 
             const SizedBox(height: 10),
@@ -218,10 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: const Text(
-                "Sign Up",
-                style: TextStyle(color: Colors.white),
-              ),
+              child: const Text("Sign Up", style: TextStyle(color: Colors.white)),
             ),
             const SizedBox(height: 10),
 
@@ -233,78 +201,43 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        // Adjust opacity for a subtle effect
-                        spreadRadius: 2,
-                        blurRadius: 9,
-                        offset: const Offset(0, 2), // Shadow in all directions
-                      ),
-                    ],
-                  ),
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      'assets/images/google_icon.svg',
-                      width: 20,
-                    ),
-                    label: const Text("Google"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      side: const BorderSide(color: Colors.white),
-                      // Border color
-                      elevation: 0,
-                      // Set to 0 since we are using BoxShadow
-                      minimumSize: const Size(160, 52),
-                    ),
-                  ),
-                ),
+                _buildSocialButton('assets/images/google_icon.svg', "Google"),
                 const SizedBox(width: 20),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        // Adjust opacity for a subtle effect
-                        spreadRadius: 2,
-                        blurRadius: 9,
-                        offset: const Offset(0, 2), // Shadow in all directions
-                      ),
-                    ],
-                  ),
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      'assets/images/facebook_icon.svg',
-                      width: 20,
-                    ),
-                    label: const Text("Facebook"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      side: const BorderSide(color: Colors.white),
-                      // Border color
-                      elevation: 0,
-                      // Set to 0 since we are using BoxShadow
-                      minimumSize: const Size(160, 52),
-                    ),
-                  ),
-                ),
+                _buildSocialButton('assets/images/facebook_icon.svg', "Facebook"),
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSocialButton(String iconPath, String label) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            spreadRadius: 2,
+            blurRadius: 9,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: ElevatedButton.icon(
+        onPressed: () {},
+        icon: SvgPicture.asset(iconPath, width: 20),
+        label: Text(label),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          side: const BorderSide(color: Colors.white),
+          elevation: 0,
+          minimumSize: const Size(160, 52),
         ),
       ),
     );
