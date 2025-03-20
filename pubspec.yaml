@@ -93,9 +93,13 @@ flutter:
   assets:
     - assets/images/campus_logo_splash_screen.svg
     - assets/images/campus_logo.svg
+    - assets/images/image_no1.png
     - assets/images/google_icon.svg
     - assets/images/facebook_icon.svg
     - assets/images/success_toast_icon.svg
+    - assets/images/filter_icon.svg
+    - assets/images/map_icon.svg
+    - assets/images/gift.svg
 
   fonts:
     - family: Inter
