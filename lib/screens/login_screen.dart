@@ -1,6 +1,8 @@
+import 'package:campus_connect/screens/registration/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'forgot_password_screen.dart';
+import 'home/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -13,6 +15,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -25,7 +29,39 @@ class _LoginScreenState extends State<LoginScreen> {
   void dispose() {
     _emailFocusNode.dispose();
     _passwordFocusNode.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
+  }
+
+  // Allow only emails ending with @gmail.com
+  bool _isEmailValid(String email) {
+    return email.toLowerCase().endsWith('@gmail.com');
+  }
+
+  void _validateAndLogin() {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+
+    if (!_isEmailValid(email)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Only @gmail.com emails are allowed")),
+      );
+      return;
+    }
+
+    if (password.length < 8) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Password must be at least 8 characters")),
+      );
+      return;
+    }
+
+    // Navigate to HomeScreen if both conditions pass
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const HomeScreen()),
+    );
   }
 
   @override
@@ -40,10 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
+        automaticallyImplyLeading: false,
       ),
       resizeToAvoidBottomInset: true,
       body: Padding(
@@ -51,9 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset('assets/images/campus_logo.svg', width: 130),
+            SvgPicture.asset('assets/images/campus_logo.svg', width: 180),
             const SizedBox(height: 20),
-
             Text("Login", style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 10),
             Text(
@@ -63,40 +95,32 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 20),
 
-            // Email Field
             const Align(
               alignment: Alignment.centerLeft,
               child: Text("Email Address", style: textStyle),
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 10),
             TextField(
+              controller: _emailController,
               focusNode: _emailFocusNode,
               decoration: InputDecoration(
                 hintText: "Enter email",
                 hintStyle: textStyle,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Color(0xFF797979), // Default border color
-                  ),
+                  borderSide: const BorderSide(color: Color(0xFF797979)),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Color(
-                      0xFF797979,
-                    ), // Default border color when not focused
-                  ),
+                  borderSide: const BorderSide(color: Color(0xFF797979)),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Colors.black, // Border color when focused
-                  ),
+                  borderSide: const BorderSide(color: Colors.black),
                 ),
                 suffixIcon: const Icon(
                   Icons.email_outlined,
-                  color: Color(0xFF797979), // Email icon color
+                  color: Color(0xFF797979),
                   size: 24,
                 ),
                 contentPadding: const EdgeInsets.symmetric(
@@ -108,7 +132,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
             const SizedBox(height: 15),
 
-            // Password Field
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -134,8 +157,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            // const SizedBox(height: 5),
             TextField(
+              controller: _passwordController,
               focusNode: _passwordFocusNode,
               obscureText: _obscureText,
               decoration: InputDecoration(
@@ -143,30 +166,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 hintStyle: textStyle,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Color(0xFF797979), // Default border color
-                  ),
+                  borderSide: const BorderSide(color: Color(0xFF797979)),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Color(
-                      0xFF797979,
-                    ), // Default border color when not focused
-                  ),
+                  borderSide: const BorderSide(color: Color(0xFF797979)),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color: Colors.black, // Border color when focused
-                  ),
+                  borderSide: const BorderSide(color: Colors.black),
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _obscureText
                         ? Icons.lock_outline
                         : Icons.visibility_outlined,
-                    color: Color(0xFF797979), // Email icon color
+                    color: const Color(0xFF797979),
                   ),
                   onPressed: () {
                     setState(() {
@@ -183,9 +198,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
             const SizedBox(height: 20),
 
-            // Login Button
             ElevatedButton(
-              onPressed: () {},
+              onPressed: _validateAndLogin,
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF1D97D4),
                 minimumSize: const Size(360, 52),
@@ -198,7 +212,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
             const SizedBox(height: 30),
 
-            // Sign Up
             const Text(
               "Don’t have an account?",
               style: TextStyle(
@@ -210,7 +223,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
             const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RegistrationScreen(),
+                  ),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,
                 minimumSize: const Size(182, 52),
@@ -225,86 +245,52 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 10),
 
-            // OR Divider
             const Text("OR", style: TextStyle(color: Color(0xFF686161))),
             const SizedBox(height: 10),
 
-            // Social Login
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        // Adjust opacity for a subtle effect
-                        spreadRadius: 2,
-                        blurRadius: 9,
-                        offset: const Offset(0, 2), // Shadow in all directions
-                      ),
-                    ],
-                  ),
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      'assets/images/google_icon.svg',
-                      width: 20,
-                    ),
-                    label: const Text("Google"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      side: const BorderSide(color: Colors.white),
-                      // Border color
-                      elevation: 0,
-                      // Set to 0 since we are using BoxShadow
-                      minimumSize: const Size(160, 52),
-                    ),
-                  ),
-                ),
+                _buildSocialButton('assets/images/google_icon.svg', "Google"),
                 const SizedBox(width: 20),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        // Adjust opacity for a subtle effect
-                        spreadRadius: 2,
-                        blurRadius: 9,
-                        offset: const Offset(0, 2), // Shadow in all directions
-                      ),
-                    ],
-                  ),
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      'assets/images/facebook_icon.svg',
-                      width: 20,
-                    ),
-                    label: const Text("Facebook"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      side: const BorderSide(color: Colors.white),
-                      // Border color
-                      elevation: 0,
-                      // Set to 0 since we are using BoxShadow
-                      minimumSize: const Size(160, 52),
-                    ),
-                  ),
+                _buildSocialButton(
+                  'assets/images/facebook_icon.svg',
+                  "Facebook",
                 ),
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSocialButton(String iconPath, String label) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            spreadRadius: 2,
+            blurRadius: 9,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: ElevatedButton.icon(
+        onPressed: () {},
+        icon: SvgPicture.asset(iconPath, width: 20),
+        label: Text(label),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          side: const BorderSide(color: Colors.white),
+          elevation: 0,
+          minimumSize: const Size(160, 52),
         ),
       ),
     );

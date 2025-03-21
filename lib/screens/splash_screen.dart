@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginScreen()),
@@ -32,10 +32,9 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             SvgPicture.asset(
               'assets/images/campus_logo_splash_screen.svg',
-              width: 150, // Adjust size as needed
+              width: 188, // Adjust size as needed
             ),
             const SizedBox(height: 20),
-            const CircularProgressIndicator(color: Colors.white),
           ],
         ),
       ),
