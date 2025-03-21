@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'forgot_password_screen.dart';
 import 'package:campus_connect/screens/registration/screens/registration_screen.dart';
 
+import 'home/home_screen.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -87,8 +89,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(7),
                   borderSide: const BorderSide(color: Colors.black),
                 ),
-                suffixIcon: const Icon(Icons.email_outlined, color: Color(0xFF797979), size: 24),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                suffixIcon: const Icon(
+                  Icons.email_outlined,
+                  color: Color(0xFF797979),
+                  size: 24,
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 10,
+                ),
               ),
             ),
 
@@ -103,7 +112,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const ForgotPasswordScreen()),
+                      MaterialPageRoute(
+                        builder: (context) => const ForgotPasswordScreen(),
+                      ),
                     );
                   },
                   child: const Text(
@@ -138,7 +149,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(
-                    _obscureText ? Icons.lock_outline : Icons.visibility_outlined,
+                    _obscureText
+                        ? Icons.lock_outline
+                        : Icons.visibility_outlined,
                     color: const Color(0xFF797979),
                   ),
                   onPressed: () {
@@ -147,7 +160,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     });
                   },
                 ),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 10,
+                ),
               ),
             ),
 
@@ -158,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const RegistrationScreen()),
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -176,12 +192,23 @@ class _LoginScreenState extends State<LoginScreen> {
             // Sign Up
             const Text(
               "Don’t have an account?",
-              style: TextStyle(fontFamily: 'Inter', fontWeight: FontWeight.w600, fontSize: 14),
+              style: TextStyle(
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+              ),
             ),
 
             const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RegistrationScreen(),
+                  ),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,
                 minimumSize: const Size(182, 52),
@@ -189,7 +216,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: const Text("Sign Up", style: TextStyle(color: Colors.white)),
+              child: const Text(
+                "Sign Up",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             const SizedBox(height: 10),
 
@@ -203,7 +233,10 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 _buildSocialButton('assets/images/google_icon.svg', "Google"),
                 const SizedBox(width: 20),
-                _buildSocialButton('assets/images/facebook_icon.svg', "Facebook"),
+                _buildSocialButton(
+                  'assets/images/facebook_icon.svg',
+                  "Facebook",
+                ),
               ],
             ),
           ],
