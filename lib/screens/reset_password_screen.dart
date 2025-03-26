@@ -1,9 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:toastification/toastification.dart'; // Toast package
 import 'login_screen.dart'; // Import LoginScreen
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
+
+  void showSuccessToast(BuildContext context) {
+    toastification.show(
+      context: context,
+      title: const Text(
+        "Success!",
+        style: TextStyle(
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w600,
+          fontSize: 14,
+          color: Colors.white,
+        ),
+      ),
+      description: const Text(
+        "Password has been reset successfully.",
+        style: TextStyle(
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w400,
+          fontSize: 14,
+          color: Colors.white,
+        ),
+      ),
+      type: ToastificationType.success,
+      autoCloseDuration: const Duration(seconds: 3),
+      showProgressBar: false,
+      backgroundColor: Colors.green[600]!,
+      icon: Container(
+        width: 40,
+        height: 40,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+        ),
+        child: Center(
+          child: SvgPicture.asset(
+            'assets/images/success_toast_icon.svg',
+            width: 24,
+            height: 24,
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +65,8 @@ class ResetPasswordScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset('assets/images/campus_logo.svg', width: 130),
-            const SizedBox(height: 40),
+            SvgPicture.asset('assets/images/campus_logo.svg', width: 180),
+            const SizedBox(height: 30),
             const Text(
               "Reset Password",
               style: TextStyle(
@@ -33,7 +77,7 @@ class ResetPasswordScreen extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 30),
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -67,13 +111,15 @@ class ResetPasswordScreen extends StatelessWidget {
               height: 52,
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigate to LoginScreen on Submit
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginScreen(),
-                    ),
-                  );
+                  showSuccessToast(context);
+                  Future.delayed(const Duration(seconds: 0), () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
+                  });
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF1D97D4),
@@ -109,7 +155,7 @@ class PasswordTextField extends StatefulWidget {
 
 class _PasswordTextFieldState extends State<PasswordTextField> {
   bool _obscureText = true;
-  bool _hasText = false; // Track if text is present
+  bool _hasText = false;
 
   final TextEditingController _controller = TextEditingController();
 
@@ -131,7 +177,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       child: TextField(
         controller: _controller,
         obscureText: _obscureText,
-        cursorColor: Colors.black, // Ensure cursor is always black
+        cursorColor: Colors.black,
         decoration: InputDecoration(
           hintText: "Enter password",
           hintStyle: const TextStyle(
@@ -139,38 +185,33 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
             fontWeight: FontWeight.w500,
             fontSize: 16,
           ),
-          suffixIcon: _hasText
-              ? IconButton(
-            icon: Icon(
-              _obscureText ? Icons.visibility_off : Icons.visibility,
-            ),
-            onPressed: () {
-              setState(() {
-                _obscureText = !_obscureText;
-              });
-            },
-          )
-              : null, // Icon only appears when there's text
+          suffixIcon:
+              _hasText
+                  ? IconButton(
+                    icon: Icon(
+                      _obscureText ? Icons.visibility_off : Icons.visibility,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                  )
+                  : null,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Color(0xFF797979), // Default border color
-              width: 1,
-            ),
+            borderSide: const BorderSide(color: Color(0xFF797979), width: 1),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: Colors.black, // Border color when selected
-              width: 1,
-            ),
+            borderSide: const BorderSide(color: Colors.black, width: 1),
           ),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 15,
             vertical: 10,
           ),
         ),
-        style: const TextStyle(color: Colors.black), // Ensure text color is black
+        style: const TextStyle(color: Colors.black),
       ),
     );
   }

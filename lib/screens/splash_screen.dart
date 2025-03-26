@@ -7,7 +7,7 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
@@ -25,18 +25,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1D97D4), // Background color
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              'assets/images/campus_logo_splash_screen.svg',
-              width: 150, // Adjust size as needed
-            ),
-            const SizedBox(height: 20),
-            const CircularProgressIndicator(color: Colors.white),
-          ],
+      backgroundColor: const Color(0xFF1D97D4),
+      body: SizedBox.expand(
+        child: SvgPicture.asset(
+          'assets/images/splash_Screen.svg',
+          fit: BoxFit.cover,
         ),
       ),
     );

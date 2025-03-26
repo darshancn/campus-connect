@@ -1,64 +1,48 @@
+import 'package:campus_connect/screens/home/screens/explore_tab_screen.dart';
+import 'package:campus_connect/screens/home/screens/home_tab_screen.dart';
+import 'package:campus_connect/screens/home/screens/my_chats_tab_screen.dart';
+import 'package:campus_connect/screens/home/screens/my_profile_tab_screen.dart';
+import 'package:campus_connect/screens/home/screens/publication_tab_screen.dart';
+import 'package:campus_connect/screens/home/widgets/custom_bottom_navbar.dart';
+import 'package:campus_connect/screens/home/widgets/home_appbar.dart';
 import 'package:flutter/material.dart';
-import 'navbar.dart';
-import 'search_bar.dart';
-import 'filter_screen.dart';
-import 'map_view_screen.dart';
-import 'home_card.dart';
-import 'bottom_navbar.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int currentIndex = 0;
+
+  final List<Widget> _tabs = const [
+    HomeTabScreen(),
+    PublicationTabScreen(),
+    ExploreTabScreen(),
+    MyChatsTabScreen(),
+    MyProfileTabScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          const Navbar(),
-          const SizedBox(height: 10),
-          const SearchBarWidget(),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF1D97D4),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const FilterScreen()));
-                  },
-                  icon: const Icon(Icons.filter_list, color: Colors.white, size: 24),
-                  label: const Text("Filter", style: TextStyle(color: Colors.white)),
-                ),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32),
-                      side: const BorderSide(color: Color(0xFF1D97D4)),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const MapViewScreen()));
-                  },
-                  icon: const Icon(Icons.map, color: Color(0xFF1D97D4), size: 16.5),
-                  label: const Text("Map View", style: TextStyle(color: Color(0xFF1D97D4))),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 10),
-          const Expanded(child: HomeCard()),
-        ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70),
+        child: HomeAppBar(currentIndex: currentIndex),
       ),
-      bottomNavigationBar: const BottomNavbar(),
+      body: _tabs[currentIndex],
+      bottomNavigationBar: CustomBottomNavbar(
+        currentIndex: currentIndex,
+        onTap: (index) => setState(() => currentIndex = index),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: CustomBottomNavbar.floatingNavButton(
+        isSelected: currentIndex == 2,
+        onPressed: () => setState(() => currentIndex = 2),
+      ),
     );
   }
 }

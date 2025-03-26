@@ -26,7 +26,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         type: ToastificationType.error,
-        autoCloseDuration: const Duration(seconds: 5),
+        autoCloseDuration: const Duration(seconds: 3),
         showProgressBar: false,
         backgroundColor: Colors.red[600]!,
         icon: Container(
@@ -64,7 +64,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           ),
         ),
         type: ToastificationType.success,
-        autoCloseDuration: const Duration(seconds: 5),
+        autoCloseDuration: const Duration(seconds: 3),
         showProgressBar: false,
         backgroundColor: Colors.green[600]!,
         icon: Container(
@@ -99,7 +99,7 @@ class ForgotPasswordScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset('assets/images/campus_logo.svg', width: 130),
+            SvgPicture.asset('assets/images/campus_logo.svg', width: 180),
             const SizedBox(height: 40),
             const Text(
               "Forgot Password",

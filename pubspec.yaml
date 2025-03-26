@@ -33,6 +33,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   image_picker: ^0.8.6+1
   provider: ^6.0.5
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
@@ -91,7 +92,7 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 
   assets:
-    - assets/images/campus_logo_splash_screen.svg
+    - assets/images/splash_Screen.svg
     - assets/images/campus_logo.svg
     - assets/images/image_no1.png
     - assets/images/google_icon.svg
