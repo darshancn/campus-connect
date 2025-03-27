@@ -7,3 +7,4 @@ class PublicationTabScreen extends StatelessWidget {
     return const Center(child: Text('Publications Tab'));
   }
 }
+

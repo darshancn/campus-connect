@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+
+class HomeTabScreen extends StatelessWidget {
+  const HomeTabScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return const Center(child: Text('Home Tab'));
+  }
+}
+
 import '../../filter_screen.dart';
 import '../../map_view_screen.dart';
 import '../widgets/profile_card.dart';
@@ -161,3 +170,4 @@ class HomeTabScreen extends StatelessWidget {
     );
   }
 }
+

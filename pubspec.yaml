@@ -117,6 +117,7 @@ flutter:
     - assets/images/gallery_image2.svg
     - assets/images/gallery_image3.svg
 
+
   fonts:
     - family: Inter
       fonts:
