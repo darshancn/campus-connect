@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../login_screen.dart';
 import 'tabs/basic_details_tab.dart';
 import 'tabs/profession_studies_tab.dart';
 import 'tabs/academic_project_tab.dart';
@@ -48,11 +47,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         _currentIndex--;
       });
     } else {
-      // Navigate back to LoginScreen when on the first tab
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginScreen()),
-      );
+      Navigator.pop(context); // Go back if at the first tab
     }
   }
 
@@ -61,8 +56,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       backgroundColor: Colors.white, // Changed background color to white
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1D97D4),
-        // AppBar color #1D97D4
+        backgroundColor: const Color(0xFF1D97D4), // AppBar color #1D97D4
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white, size: 30),

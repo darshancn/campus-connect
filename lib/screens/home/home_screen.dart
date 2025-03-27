@@ -1,11 +1,11 @@
+import 'package:campus_connect/screens/home/screens/explore_tab_screen.dart';
+import 'package:campus_connect/screens/home/screens/home_tab_screen.dart';
+import 'package:campus_connect/screens/home/screens/my_chats_tab_screen.dart';
+import 'package:campus_connect/screens/home/screens/my_profile_tab_screen.dart';
+import 'package:campus_connect/screens/home/screens/publication_tab_screen.dart';
+import 'package:campus_connect/screens/home/widgets/custom_bottom_navbar.dart';
+import 'package:campus_connect/screens/home/widgets/home_appbar.dart';
 import 'package:flutter/material.dart';
-import '../widgets/custom_bottom_navbar.dart';
-import '../widgets/home_appbar.dart';
-import 'home/explore_tab_screen.dart';
-import 'home/home_tab_screen.dart';
-import 'home/my_chats_tab_screen.dart';
-import 'home/my_profile_tab_screen.dart';
-import 'home/publication_tab_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70),

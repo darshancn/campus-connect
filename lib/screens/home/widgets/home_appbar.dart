@@ -23,7 +23,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      currentIndex == 0 ? const Size.fromHeight(100) : const Size.fromHeight(100);
+      currentIndex == 0
+          ? const Size.fromHeight(100)
+          : const Size.fromHeight(100);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       flexibleSpace: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -55,21 +57,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   Icon(Icons.location_on, color: Colors.white, size: 21),
                 ],
               ),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w700,
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-              ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const NotificationScreen()),
-                  );
+                  Navigator.of(context).push(_createRoute());
                 },
                 child: Container(
                   width: 40,
@@ -79,10 +69,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                     color: Colors.white,
                     shape: BoxShape.circle,
                     boxShadow: const [
-                      BoxShadow(color: Color(0x66000000), blurRadius: 4),
+                      BoxShadow(color: Color(0x66000000), blurRadius: 5),
                     ],
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Icon(
                       Icons.notifications,
                       size: 24,
@@ -95,6 +85,18 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Route _createRoute() {
+    return PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 250),
+      pageBuilder:
+          (context, animation, secondaryAnimation) =>
+      const NotificationScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
     );
   }
 }

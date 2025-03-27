@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'home/widgets/custom_bottom_navbar.dart';
 
-class NotificationScreen extends StatefulWidget {
-  const NotificationScreen({Key? key}) : super(key: key);
+class MapViewScreen extends StatefulWidget {
+  const MapViewScreen({super.key});
 
   @override
-  State<NotificationScreen> createState() => _NotificationScreenState();
+  State<MapViewScreen> createState() => _MapViewScreenState();
 }
 
-class _NotificationScreenState extends State<NotificationScreen> {
+class _MapViewScreenState extends State<MapViewScreen> {
   int currentIndex = 0;
 
   @override
@@ -17,13 +17,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xFF1D97D4),
+        elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white, size: 30),
           onPressed: () => Navigator.pop(context),
         ),
         centerTitle: true,
         title: const Text(
-          'Notification',
+          'Map View',
           style: TextStyle(
             fontFamily: 'Inter',
             fontWeight: FontWeight.w700,
@@ -31,15 +32,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
             color: Colors.white,
           ),
         ),
+        toolbarHeight: 73,
       ),
       body: const Center(
         child: Text(
-          'No notifications yet!',
+          'Map content goes here',
           style: TextStyle(
             fontFamily: 'Inter',
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            color: Colors.black54,
           ),
         ),
       ),

@@ -30,16 +30,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  image_picker: ^0.8.6+1
+  provider: ^6.0.5
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_svg: ^2.0.9
   toastification: ^1.1.2
+  shared_preferences: ^2.2.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -91,11 +92,30 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 
   assets:
-    - assets/images/campus_logo_splash_screen.svg
+    - assets/images/splash_Screen.svg
     - assets/images/campus_logo.svg
+    - assets/images/image_no1.png
     - assets/images/google_icon.svg
     - assets/images/facebook_icon.svg
     - assets/images/success_toast_icon.svg
+    - assets/images/filter_icon.svg
+    - assets/images/map_icon.svg
+    - assets/images/gift.svg
+    - assets/images/sample_image1.png
+    - assets/images/sample_image2.png
+    - assets/images/sample_image3.png
+    - assets/images/gold_member_icon.svg
+    - assets/images/friendship.svg
+    - assets/images/relation_sought.svg
+    - assets/images/swimming.svg
+    - assets/images/photography.svg
+    - assets/images/book.svg
+    - assets/images/music.svg
+    - assets/images/cricket.svg
+    - assets/images/interests_icon.svg
+    - assets/images/gallery_image1.svg
+    - assets/images/gallery_image2.svg
+    - assets/images/gallery_image3.svg
 
   fonts:
     - family: Inter
@@ -105,4 +125,6 @@ flutter:
           weight: 700
         - asset: assets/fonts/Inter-Medium.ttf
           weight: 500
+
+
 
