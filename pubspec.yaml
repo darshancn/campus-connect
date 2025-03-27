@@ -101,6 +101,22 @@ flutter:
     - assets/images/filter_icon.svg
     - assets/images/map_icon.svg
     - assets/images/gift.svg
+    - assets/images/sample_image1.png
+    - assets/images/sample_image2.png
+    - assets/images/sample_image3.png
+    - assets/images/gold_member_icon.svg
+    - assets/images/friendship.svg
+    - assets/images/relation_sought.svg
+    - assets/images/swimming.svg
+    - assets/images/photography.svg
+    - assets/images/book.svg
+    - assets/images/music.svg
+    - assets/images/cricket.svg
+    - assets/images/interests_icon.svg
+    - assets/images/gallery_image1.svg
+    - assets/images/gallery_image2.svg
+    - assets/images/gallery_image3.svg
+
 
   fonts:
     - family: Inter

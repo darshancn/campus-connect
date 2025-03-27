@@ -38,7 +38,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       flexibleSpace: SafeArea(
         child: Padding(
+
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -79,6 +81,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                     shape: BoxShape.circle,
                     boxShadow: const [
                       BoxShadow(color: Color(0x66000000), blurRadius: 4),
+                      BoxShadow(color: Color(0x66000000), blurRadius: 5),
                     ],
                   ),
                   child: const Center(
@@ -103,9 +106,11 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       pageBuilder:
           (context, animation, secondaryAnimation) =>
               const NotificationScreen(),
+      const NotificationScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(opacity: animation, child: child);
       },
     );
   }
 }
+
