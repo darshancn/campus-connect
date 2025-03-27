@@ -112,10 +112,11 @@ flutter:
     - assets/images/book.svg
     - assets/images/music.svg
     - assets/images/cricket.svg
+    - assets/images/green_tick.svg
     - assets/images/interests_icon.svg
-    - assets/images/gallery_image1.svg
-    - assets/images/gallery_image2.svg
-    - assets/images/gallery_image3.svg
+    - assets/images/gallery_image1.png
+    - assets/images/gallery_image2.png
+    - assets/images/gallery_image3.png
 
 
   fonts:
