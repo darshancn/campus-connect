@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:geolocator/geolocator.dart';
 import 'home/widgets/custom_bottom_navbar.dart';
 
 class MapViewScreen extends StatefulWidget {
@@ -10,6 +13,51 @@ class MapViewScreen extends StatefulWidget {
 
 class _MapViewScreenState extends State<MapViewScreen> {
   int currentIndex = 0;
+  LatLng? _currentPosition;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _getUserLocation();
+    });
+  }
+
+  Future<void> _getUserLocation() async {
+    try {
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) return;
+
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.deniedForever) return;
+      }
+
+      // Get last known position instantly if available
+      Position? lastKnownPosition = await Geolocator.getLastKnownPosition();
+      if (lastKnownPosition != null) {
+        setState(() {
+          _currentPosition = LatLng(
+            lastKnownPosition.latitude,
+            lastKnownPosition.longitude,
+          );
+        });
+      }
+
+      // Get real-time position with timeout (max 5 sec)
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+        timeLimit: const Duration(seconds: 5),
+      );
+
+      setState(() {
+        _currentPosition = LatLng(position.latitude, position.longitude);
+      });
+    } catch (e) {
+      debugPrint("Error fetching location: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +82,36 @@ class _MapViewScreenState extends State<MapViewScreen> {
         ),
         toolbarHeight: 73,
       ),
-      body: const Center(
-        child: Text(
-          'Map content goes here',
-          style: TextStyle(
-            fontFamily: 'Inter',
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
+      body:
+          _currentPosition == null
+              ? const Center(child: CircularProgressIndicator())
+              : FlutterMap(
+                options: MapOptions(
+                  initialCenter: _currentPosition!,
+                  initialZoom: 15,
+                ),
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    subdomains: ['a', 'b', 'c'],
+                  ),
+                  MarkerLayer(
+                    markers: [
+                      Marker(
+                        point: _currentPosition!,
+                        width: 40,
+                        height: 40,
+                        child: const Icon(
+                          Icons.location_pin,
+                          color: Colors.red,
+                          size: 40,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
       bottomNavigationBar: CustomBottomNavbar(
         currentIndex: currentIndex,
         onTap: (index) => setState(() => currentIndex = index),
