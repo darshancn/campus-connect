@@ -1,20 +1,23 @@
 import 'package:campus_connect/screens/chat/chat_screen.dart';
 import 'package:campus_connect/screens/modal.dart';
-import '../../../widgets/badge_popup.dart';
 import '../../../widgets/toast_modals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class PageDetailsScreen extends StatefulWidget {
+class ExploreDetailScreen extends StatefulWidget {
   final String imagePath;
 
-  const PageDetailsScreen({super.key, required this.imagePath});
+  // Provide a default imagePath so that the parameter isn't required in pageBuilder calls.
+  const ExploreDetailScreen({
+    super.key,
+    this.imagePath = 'assets/images/default.png',
+  });
 
   @override
-  State<PageDetailsScreen> createState() => _PageDetailsScreenState();
+  State<ExploreDetailScreen> createState() => _ExploreDetailScreenState();
 }
 
-class _PageDetailsScreenState extends State<PageDetailsScreen>
+class _ExploreDetailScreenState extends State<ExploreDetailScreen>
     with SingleTickerProviderStateMixin {
   final DraggableScrollableController _controller =
       DraggableScrollableController();
@@ -103,7 +106,10 @@ class _PageDetailsScreenState extends State<PageDetailsScreen>
             child: SizedBox(
               width: double.infinity,
               height: MediaQuery.of(context).size.height * (2 / 3),
-              child: Image.asset(widget.imagePath, fit: BoxFit.cover),
+              child: Image.asset(
+                widget.imagePath,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           // Top navigation buttons
@@ -365,285 +371,6 @@ class _PageDetailsScreenState extends State<PageDetailsScreen>
                             'assets/images/friendship.svg',
                             height: 32,
                           ),
-                          const SizedBox(height: 20),
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/community_icon.svg',
-                                width: 18,
-                                height: 18,
-                              ),
-                              const SizedBox(width: 6),
-                              const Text(
-                                'Community Details',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  decoration: TextDecoration.none,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 12),
-                          _infoRow('Religion', 'Christian'),
-                          const SizedBox(height: 6),
-                          _infoRow('Community', 'Christian'),
-                          const SizedBox(height: 6),
-                          _infoRow('Sub-Community', 'Christian'),
-
-                          const SizedBox(height: 24),
-                          // Personality Type
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/person_icon.svg',
-                                width: 18,
-                                height: 18,
-                              ),
-                              const SizedBox(width: 6),
-                              const Text(
-                                'Personality Type',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  decoration: TextDecoration.none,
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          const SizedBox(height: 12),
-                          SvgPicture.asset(
-                            'assets/images/friendship.svg',
-                            height: 32,
-                          ),
-
-                          const SizedBox(height: 24),
-                          // Profession and Studies
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/book_icon.svg',
-                                width: 18,
-                                height: 18,
-                              ),
-                              const SizedBox(width: 6),
-                              const Text(
-                                'Profession and Studies',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  decoration: TextDecoration.none,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 12),
-                          _infoRow(
-                            'Current/Intended Occupation',
-                            'Software Developer',
-                            isBoldRight: true,
-                          ),
-                          const SizedBox(height: 6),
-                          _infoRow(
-                            'Academic Field',
-                            'Data Science',
-                            isBoldRight: true,
-                          ),
-                          const SizedBox(height: 6),
-                          _infoRow(
-                            'University Course',
-                            'Artificial Intelligence',
-                            isBoldRight: true,
-                          ),
-                          const SizedBox(height: 6),
-                          _infoRow(
-                            'Level of Studies',
-                            'Bachelors degree 1,2,3',
-                            isBoldRight: true,
-                          ),
-                          const SizedBox(height: 6),
-                          _infoRow(
-                            'University/School Attended',
-                            'XYZ University',
-                            isBoldRight: true,
-                          ),
-
-                          const SizedBox(height: 24),
-                          // Physical Criteria
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/fitness_icon.svg',
-                                width: 18,
-                                height: 18,
-                              ),
-                              const SizedBox(width: 6),
-                              const Text(
-                                'Physical Criteria',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  decoration: TextDecoration.none,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 12),
-                          _infoRow('Size', 'Small', isBoldRight: true),
-                          const SizedBox(height: 6),
-                          _infoRow('Weight', '50 kg', isBoldRight: true),
-
-                          // Personal Information
-                          const SizedBox(height: 20),
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/personal_info_icon.svg',
-                                width: 18,
-                              ),
-                              const SizedBox(width: 6),
-                              const Text(
-                                'Personal Information',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          const SizedBox(height: 12),
-                          _infoRow('Height (cm)', '5.3'),
-                          _infoRow('Any Disability', 'No'),
-                          _infoRow('Complexion', 'Fair'),
-                          _infoRow('Body Type', 'Fit'),
-
-                          // Lifestyle
-                          const SizedBox(height: 24),
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/lifestyle_icon.svg',
-                                width: 18,
-                              ),
-                              const SizedBox(width: 6),
-                              const Text(
-                                'Life Style',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          const SizedBox(height: 12),
-                          _infoRow('Diet', 'Non-Vegetarian'),
-                          _infoRow('Drink', 'Alcoholic'),
-                          _infoRow('Smoker', 'Smoker'),
-
-                          // Badges
-                          const SizedBox(height: 20),
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/badges_icon.svg',
-                                width: 18,
-                              ),
-                              const SizedBox(width: 6),
-                              const Text(
-                                'Badges',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          const SizedBox(height: 12),
-                          Row(
-                            children: [
-                              GestureDetector(
-                                onTap:
-                                    () => showDialog(
-                                      context: context,
-                                      builder:
-                                          (_) => const BadgePopup(
-                                            badgeImage:
-                                                'assets/images/badge1.png',
-                                          ),
-                                    ),
-                                child: Image.asset(
-                                  'assets/images/badge1.png',
-                                  width: 90,
-                                  height: 90,
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              GestureDetector(
-                                onTap:
-                                    () => showDialog(
-                                      context: context,
-                                      builder:
-                                          (_) => const BadgePopup(
-                                            badgeImage:
-                                                'assets/images/badge2.png',
-                                          ),
-                                    ),
-                                child: Image.asset(
-                                  'assets/images/badge1.png',
-                                  width: 90,
-                                  height: 90,
-                                ),
-                              ),
-                            ],
-                          ),
-
-                          // 👇 Rewards Row
-                          const SizedBox(height: 20),
-                          const Text(
-                            'Rewards',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          Row(
-                            children: [
-                              GestureDetector(
-                                onTap:
-                                    () => showDialog(
-                                      context: context,
-                                      builder: (_) => const RewardPopup(),
-                                    ),
-                                child: Image.asset(
-                                  'assets/images/reward1.png',
-                                  width: 90,
-                                  height: 90,
-                                ),
-                              ),
-                              // Add more rewards here if needed
-                            ],
-                          ),
-
-                          const SizedBox(height: 100),
                         ],
                       );
                     },
@@ -689,11 +416,8 @@ class _PageDetailsScreenState extends State<PageDetailsScreen>
                         flex: 6,
                         child: GestureDetector(
                           onTap: () {
-                            String name =
-                                'Bence Borg'; // Replace with actual dynamic name
-                            String imagePath =
-                                'assets/images/bence_borg.png'; // Replace with actual imagePath
-
+                            String name = 'Bence Borg';
+                            String imagePath = 'assets/images/bence_borg.png';
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -928,59 +652,4 @@ class _PageDetailsScreenState extends State<PageDetailsScreen>
       ),
     );
   }
-}
-
-Widget _infoRow(String left, String right, {bool isBoldRight = false}) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text(
-        left,
-        style: const TextStyle(
-          fontFamily: 'Inter',
-          fontWeight: FontWeight.w400,
-          fontSize: 14,
-          color: Colors.black,
-          decoration: TextDecoration.none,
-        ),
-      ),
-      Text(
-        right,
-        style: TextStyle(
-          fontFamily: 'Inter',
-          fontWeight: isBoldRight ? FontWeight.w700 : FontWeight.w400,
-          fontSize: 14,
-          color: Colors.black,
-          decoration: TextDecoration.none,
-        ),
-      ),
-    ],
-  );
-}
-
-Widget _infoRow1(String left, String right) {
-  return Padding(
-    padding: const EdgeInsets.only(bottom: 8),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          left,
-          style: const TextStyle(
-            fontFamily: 'Inter',
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        Text(
-          right,
-          style: const TextStyle(
-            fontFamily: 'Inter',
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ],
-    ),
-  );
 }

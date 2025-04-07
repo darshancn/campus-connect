@@ -40,11 +40,13 @@ dependencies:
   flutter_screenutil: ^5.0.0+3
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  font_awesome_flutter: ^10.7.0
+  flutter_svg: ^2.0.9
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_svg: ^2.0.9
   toastification: ^1.1.2
   shared_preferences: ^2.2.2
 
@@ -131,7 +133,48 @@ flutter:
     - assets/images/chat_image3.png
     - assets/images/chat_image4.png
     - assets/images/chat_image5.png
-
+    - assets/images/chat_image6.png
+    - assets/images/publication_image1.png
+    - assets/images/publication_image2.png
+    - assets/images/publication_image3.png
+    - assets/images/share_icon.svg
+    - assets/images/advertisement_image1.png
+    - assets/images/Ellipse_1.png
+    - assets/images/new_match1.png
+    - assets/images/new_match2.png
+    - assets/images/new_match3.png
+    - assets/images/new_match4.png
+    - assets/images/new_match5.png
+    - assets/images/new_match6.png
+    - assets/images/crown_black.png
+    - assets/images/crown_white.png
+    - assets/images/like_me1.png
+    - assets/images/like_me2.png
+    - assets/images/like_by_me1.png
+    - assets/images/like_by_me2.png
+    - assets/images/like_by_me3.png
+    - assets/images/like_by_me4.png
+    - assets/images/match_profile.png
+    - assets/images/match_profile2.png
+    - assets/images/match_profile3.png
+    - assets/images/match_profile4.png
+    - assets/images/match_profile5.png
+    - assets/images/match_profile6.png
+    - assets/images/favourite1.png
+    - assets/images/favourite2.png
+    - assets/images/favourite3.png
+    - assets/images/favourite4.png
+    - assets/images/favourite5.png
+    - assets/images/favourite6.png
+    - assets/images/rejected_user1.png
+    - assets/images/rejected_user2.png
+    - assets/images/rejected_user3.png
+    - assets/images/rejected_user4.png
+    - assets/images/default.png
+    - assets/images/badge1.png
+    - assets/images/reward1.png
+    - assets/images/trophy-star 1.png
+    - assets/images/super 1.png
 
   fonts:
     - family: Inter
