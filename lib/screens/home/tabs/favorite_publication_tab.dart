@@ -2,30 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../widgets/comment_drawer.dart';
 import '../../../widgets/share_drawer.dart';
+import '../screens/publication_details.dart';
 import '../widgets/advertisement_screen.dart';
-import 'publication_details.dart';
 
-class PublicationTabScreen extends StatefulWidget {
-  const PublicationTabScreen({super.key});
+class FavoritePublicationTab extends StatefulWidget {
+  const FavoritePublicationTab({super.key});
 
   @override
-  _PublicationTabScreenState createState() => _PublicationTabScreenState();
+  _FavoritePublicationTabState createState() => _FavoritePublicationTabState();
 }
 
-class _PublicationTabScreenState extends State<PublicationTabScreen> {
+class _FavoritePublicationTabState extends State<FavoritePublicationTab> {
   Map<String, bool> likedImages = {};
-  Map<String, int> likeCounts = {"image1": 12, "image2": 20, "image3": 15};
-  Map<String, int> commentCounts = {"image1": 8, "image2": 10, "image3": 6};
-  Map<String, int> shareCounts = {"image1": 5, "image2": 7, "image3": 3};
+  Map<String, int> likeCounts = {"image1": 18, "image2": 26, "image3": 14};
+  Map<String, int> commentCounts = {"image1": 6, "image2": 9, "image3": 11};
+  Map<String, int> shareCounts = {"image1": 3, "image2": 5, "image3": 4};
   Map<String, String> publishDates = {
-    "image1": "24-12-2024",
-    "image2": "15-01-2025",
-    "image3": "05-02-2025",
+    "image1": "12-03-2024",
+    "image2": "20-03-2024",
+    "image3": "29-03-2024",
   };
   Map<String, String> buttonTypes = {
-    "image1": "Event",
-    "image2": "News",
-    "image3": "Event",
+    "image1": "News",
+    "image2": "Event",
+    "image3": "News",
+  };
+  Map<String, String> titles = {
+    "image1": "News Title 123",
+    "image2": "Event Title 123",
+    "image3": "News Title 456",
   };
 
   void _toggleLike(String key) {
@@ -58,6 +63,13 @@ class _PublicationTabScreenState extends State<PublicationTabScreen> {
     );
   }
 
+  void _navigateToDetails() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const PublicationDetailsScreen()),
+    );
+  }
+
   Widget _buildAdvertisementBox() {
     return GestureDetector(
       onTap: () => _navigateToAdvertisement(context),
@@ -83,13 +95,6 @@ class _PublicationTabScreenState extends State<PublicationTabScreen> {
     );
   }
 
-  void _navigateToDetails() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const PublicationDetailsScreen()),
-    );
-  }
-
   Widget _buildImage(String imagePath, String key) {
     return Stack(
       alignment: Alignment.center,
@@ -106,8 +111,6 @@ class _PublicationTabScreenState extends State<PublicationTabScreen> {
             ),
           ),
         ),
-
-        // Bottom Left Elements (Title, Button, Calendar, Views)
         Positioned(
           bottom: 20,
           left: 20,
@@ -116,11 +119,10 @@ class _PublicationTabScreenState extends State<PublicationTabScreen> {
             children: [
               GestureDetector(
                 onTap: _navigateToDetails,
-                // ✅ Now both the text and button are clickable
                 child: Row(
                   children: [
                     Text(
-                      "Event title 123",
+                      titles[key]!,
                       style: const TextStyle(
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w600,
@@ -151,8 +153,6 @@ class _PublicationTabScreenState extends State<PublicationTabScreen> {
                 ),
               ),
               const SizedBox(height: 8),
-
-              // Calendar Icon and Date
               Row(
                 children: [
                   const Icon(Icons.event, color: Colors.white, size: 20),
@@ -169,8 +169,6 @@ class _PublicationTabScreenState extends State<PublicationTabScreen> {
                 ],
               ),
               const SizedBox(height: 8),
-
-              // Views, Blue Dot, View Text
               Row(
                 children: [
                   const Icon(
@@ -202,8 +200,6 @@ class _PublicationTabScreenState extends State<PublicationTabScreen> {
             ],
           ),
         ),
-
-        // Right-side icons (Like, Comment, Share)
         Positioned(
           bottom: 50,
           right: 5,
