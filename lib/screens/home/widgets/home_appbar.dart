@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../notification_screen.dart';
+import '../../../widgets/notification_screen.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final int currentIndex;
@@ -77,10 +77,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.circle,
-                    boxShadow: const [
-                      BoxShadow(color: Color(0x66000000), blurRadius: 4),
-                      BoxShadow(color: Color(0x66000000), blurRadius: 5),
-                    ],
+                    // boxShadow: const [
+                    //   BoxShadow(color: Color(0x66000000), blurRadius: 4),
+                    // ],
                   ),
                   child: const Center(
                     child: Icon(

@@ -30,10 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   cupertino_icons: ^1.0.8
-  image_picker: ^0.8.6+1
   provider: ^6.0.5
-  shared_preferences: ^2.2.2
   flutter_map: ^6.0.0
   latlong2: ^0.9.1
   geolocator: ^10.1.0
@@ -42,13 +41,18 @@ dependencies:
   hive_flutter: ^1.1.0
   font_awesome_flutter: ^10.7.0
   flutter_svg: ^2.0.9
+  image_picker: ^1.0.4
+  getwidget: ^4.0.0
+  toastification: ^1.1.0
+  shared_preferences: ^2.2.2
+  dotted_border: ^2.0.0
+  device_preview: ^1.2.0
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  toastification: ^1.1.2
-  shared_preferences: ^2.2.2
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -175,6 +179,25 @@ flutter:
     - assets/images/reward1.png
     - assets/images/trophy-star 1.png
     - assets/images/super 1.png
+    - assets/images/logout.png
+    - assets/images/add-image.png
+    - assets/images/buy-credit_star.png
+    - assets/images/credit-balance.png
+    - assets/images/apple_pay.png
+    - assets/images/credit_card.png
+    - assets/images/google_wallet.png
+    - assets/images/paypal.png
+    - assets/images/rounded_right_tick.png
+    - assets/images/badge2.png
+    - assets/images/badge3.png
+    - assets/images/badge4.png
+    - assets/images/reward2.png
+    - assets/images/reward3.png
+    - assets/images/badge_icon.png
+    - assets/images/reward_icon.png
+    - assets/images/award_blur_1.png
+    - assets/images/outlined_green_tick.png
+    - assets/images/error_icon.png
 
   fonts:
     - family: Inter

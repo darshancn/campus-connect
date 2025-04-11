@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../screens/registration/screens/tabs/set_credentials_tab.dart';
 
 class TermsOfServiceScreen extends StatelessWidget {
   const TermsOfServiceScreen({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/profile_detail_screen.dart'; // <-- Import the screen
+import '../profile_detail_screen.dart'; // <-- Import the screen
 
 class ProfileCard extends StatefulWidget {
   const ProfileCard({super.key});

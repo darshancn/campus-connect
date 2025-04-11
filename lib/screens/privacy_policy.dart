@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../screens/registration/screens/tabs/set_credentials_tab.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
   const PrivacyPolicyScreen({super.key});

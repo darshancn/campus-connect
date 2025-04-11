@@ -11,13 +11,13 @@ class _CommentDrawerState extends State<CommentDrawer> {
   final List<Map<String, String>> _comments = [
     {
       "name": "Jane Doe",
-      "profile": "assets/images/Ellipse_1.png",
+      "my_profile": "assets/images/Ellipse_1.png",
       "comment": "I really appreciate the insights shared in this article!",
       "time": "5 min ago",
     },
     {
       "name": "Bạc Khương Đạo",
-      "profile": "assets/images/Ellipse_2.png",
+      "my_profile": "assets/images/Ellipse_2.png",
       "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "time": "5 min ago",
     },
@@ -31,13 +31,13 @@ class _CommentDrawerState extends State<CommentDrawer> {
         _comments.addAll([
           {
             "name": "Alex Johnson",
-            "profile": "assets/images/Ellipse_1.png",
+            "my_profile": "assets/images/Ellipse_1.png",
             "comment": "Great discussion here! I love different viewpoints.",
             "time": "10 min ago",
           },
           {
             "name": "Sophia Tran",
-            "profile": "assets/images/Ellipse_2.png",
+            "my_profile": "assets/images/Ellipse_2.png",
             "comment": "This was such a helpful read. Thanks for sharing!",
             "time": "12 min ago",
           },
@@ -104,7 +104,7 @@ class _CommentDrawerState extends State<CommentDrawer> {
         final comment = _comments[index];
         return _buildCommentTile(
           name: comment["name"]!,
-          profile: comment["profile"]!,
+          profile: comment["my_profile"]!,
           commentText: comment["comment"]!,
           time: comment["time"]!,
         );

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'tabs/basic_details_tab.dart';
-import 'tabs/profession_studies_tab.dart';
-import 'tabs/academic_project_tab.dart';
-import 'tabs/professional_project_tab.dart';
-import 'tabs/set_credentials_tab.dart';
-import 'widgets/tab_indicator.dart';
-import 'widgets/next_button.dart';
+import '../../authentication/screens/login_screen.dart';
+import '../tabs/academic_project_tab.dart';
+import '../tabs/basic_details_tab.dart';
+import '../tabs/profession_studies_tab.dart';
+import '../tabs/professional_project_tab.dart';
+import '../tabs/set_credentials_tab.dart';
+import '../widgets/next_button.dart';
+import '../widgets/tab_indicator.dart';
+import '../widgets/toast_modal.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -38,6 +40,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       setState(() {
         _currentIndex++;
       });
+    } else {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const ToastModal(),
+      );
+
+      Future.delayed(const Duration(milliseconds: 4000), () {
+        Navigator.of(context).pop(); // remove toast
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
+        );
+      });
     }
   }
 
@@ -47,16 +63,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         _currentIndex--;
       });
     } else {
-      Navigator.pop(context); // Go back if at the first tab
+      Navigator.pop(context);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Changed background color to white
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1D97D4), // AppBar color #1D97D4
+        backgroundColor: const Color(0xFF1D97D4),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white, size: 30),
@@ -79,7 +95,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           const SizedBox(height: 20),
           TabIndicator(currentIndex: _currentIndex, totalTabs: _tabs.length),
           Expanded(child: _tabs[_currentIndex]),
-          NextButton(onPressed: _nextTab),
+          NextButton(
+            onPressed: _nextTab,
+            text: _currentIndex == _tabs.length - 1 ? 'Submit' : 'Next',
+          ),
           const SizedBox(height: 20),
         ],
       ),
