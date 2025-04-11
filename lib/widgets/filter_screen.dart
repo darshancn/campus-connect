@@ -132,13 +132,13 @@ class _FilterScreenState extends State<FilterScreen> {
                         _buildButton(
                           "Reset",
                           Colors.black,
-                              () => Navigator.pop(context), // No change for Reset
+                              () => Navigator.pop(context),
                         ),
                         const SizedBox(width: 16),
                         _buildButton(
                           "Apply",
                           const Color(0xFF1D97D4),
-                              () => Navigator.pop(context, true), // ✅ Corrected here
+                              () => Navigator.pop(context, true),
                         ),
                       ],
                     ),

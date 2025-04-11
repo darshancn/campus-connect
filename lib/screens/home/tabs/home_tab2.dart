@@ -15,37 +15,42 @@ class HomeTab2 extends StatelessWidget {
         backgroundColor: const Color(0xFF1D97D4),
         automaticallyImplyLeading: false,
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: onBackPressed,
+        ),
         title: const Text(
           'Search',
           style: TextStyle(
             fontFamily: 'Inter',
             fontWeight: FontWeight.w700,
             fontSize: 20,
-            height: 1.0,
-            letterSpacing: 0,
             color: Colors.white,
           ),
         ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: onBackPressed,
-        ),
       ),
-      body: Column(
-        children: [
-          const AdvertisementsBox(),
-          const Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              child: Column(
-                children: [
-                  Expanded(child: ProfileCard()),
-                  SizedBox(height: 20),
-                ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: IntrinsicHeight(
+                child: Column(
+                  children: [
+                    const AdvertisementsBox(),
+                    const Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 12),
+                        child: ProfileCard(),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
