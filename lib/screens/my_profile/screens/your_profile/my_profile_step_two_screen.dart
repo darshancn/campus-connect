@@ -203,7 +203,7 @@ class _MyProfileStepTwoScreenState extends State<MyProfileStepTwoScreen> {
           values: values,
           min: min,
           max: max,
-          divisions: null, // Removes dot markings
+          divisions: null,
           labels: RangeLabels(
             '${values.start.round()}$unit',
             '${values.end.round()}$unit',

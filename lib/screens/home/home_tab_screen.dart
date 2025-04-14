@@ -24,12 +24,13 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
   }
 
   Future<void> openFilterScreen(BuildContext context) async {
+    // Push the FilterScreen and wait for a bool result
     final result = await Navigator.push<bool>(
       context,
       MaterialPageRoute(builder: (_) => const FilterScreen()),
     );
 
-    // Ensure we only switch if the result is true
+    // If user tapped "Apply" (i.e. popped with true), switch to Tab 2
     if (result == true) {
       switchToTab2();
     }
@@ -39,7 +40,9 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: showTab2
+      // If showTab2 is true, display HomeTab2 and pass a back callback
           ? HomeTab2(onBackPressed: switchToTab1)
+      // Otherwise display HomeTab1 and pass the filter opener
           : HomeTab1(onSwitchTab: () => openFilterScreen(context)),
     );
   }

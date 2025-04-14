@@ -198,6 +198,18 @@ flutter:
     - assets/images/award_blur_1.png
     - assets/images/outlined_green_tick.png
     - assets/images/error_icon.png
+    - assets/images/like.png
+    - assets/images/star_label.png
+    - assets/images/rose.png
+    - assets/images/teddy.png
+    - assets/images/chips.png
+    - assets/images/love.png
+    - assets/images/gift1.png
+    - assets/images/gift2.png
+    - assets/images/send_gift.png
+    - assets/images/map_image1.png
+    - assets/images/map_image2.png
+    - assets/images/map_image3.png
 
   fonts:
     - family: Inter
