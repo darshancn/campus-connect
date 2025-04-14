@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../widgets/payment_method_toast_modal.dart';
-import '../../widgets/payment_success_modal.dart';
+import '../../widgets/payment_sucess_modal.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
   const PaymentMethodScreen({super.key});
