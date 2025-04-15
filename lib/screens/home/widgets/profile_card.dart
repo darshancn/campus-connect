@@ -64,6 +64,7 @@ class _ProfileCardState extends State<ProfileCard> {
         }
       },
       child: Container(
+
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -72,6 +73,7 @@ class _ProfileCardState extends State<ProfileCard> {
           ],
         ),
         child: Column(
+
           children: [
             // Image section with overlays
             Expanded(

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import '../../../widgets/filter_screen.dart';
-import '../../../widgets/map_view_screen.dart';
 import '../../../widgets/notification_screen.dart';
 import '../widgets/profile_card.dart';
 
 class HomeTab1 extends StatelessWidget {
-  final VoidCallback onSwitchTab;
+  final VoidCallback onFilterTap;
+  final VoidCallback onMapViewTap;
 
-  const HomeTab1({super.key, required this.onSwitchTab});
+  const HomeTab1({
+    super.key,
+    required this.onFilterTap,
+    required this.onMapViewTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +61,7 @@ class HomeTab1 extends StatelessWidget {
                     width: 40,
                     height: 40,
                     padding: const EdgeInsets.fromLTRB(7.0, 4.0, 6.0, 4.0),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
                     ),
@@ -127,21 +131,13 @@ class HomeTab1 extends StatelessWidget {
                 _buildButton(
                   label: 'Filter',
                   icon: Icons.tune,
-                  onPressed:
-                      () => Navigator.push(
-                        context,
-                        _createSlideRoute(const FilterScreen()),
-                      ),
+                  onPressed: onFilterTap,
                 ),
                 const SizedBox(width: 10),
                 _buildButton(
                   label: 'Map View',
                   icon: Icons.map,
-                  onPressed:
-                      () => Navigator.push(
-                        context,
-                        _createSlideRoute(const MapViewScreen()),
-                      ),
+                  onPressed: onMapViewTap,
                 ),
               ],
             ),
@@ -186,20 +182,6 @@ class HomeTab1 extends StatelessWidget {
         minimumSize: const Size(78, 32),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
       ),
-    );
-  }
-
-  Route _createSlideRoute(Widget screen) {
-    return PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 200),
-      pageBuilder: (context, animation, secondaryAnimation) => screen,
-      transitionsBuilder: (context, animation, _, child) {
-        final offsetAnimation = Tween<Offset>(
-          begin: const Offset(1.0, 0),
-          end: Offset.zero,
-        ).animate(animation);
-        return SlideTransition(position: offsetAnimation, child: child);
-      },
     );
   }
 

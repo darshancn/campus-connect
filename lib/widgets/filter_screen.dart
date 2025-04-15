@@ -68,7 +68,10 @@ class _FilterScreenState extends State<FilterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.of(context).size.width < 600;
+    final isMobile = MediaQuery
+        .of(context)
+        .size
+        .width < 600;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -105,7 +108,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       _distanceRange,
                       0,
                       25,
-                      (val) => setState(() => _distanceRange = val),
+                          (val) => setState(() => _distanceRange = val),
                       'km',
                     ),
                     _verticalSpacing(),
@@ -114,7 +117,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       _ageRange,
                       18,
                       60,
-                      (val) => setState(() => _ageRange = val),
+                          (val) => setState(() => _ageRange = val),
                       'yrs',
                     ),
                     _verticalSpacing(),
@@ -156,7 +159,7 @@ class _FilterScreenState extends State<FilterScreen> {
                         _buildButton(
                           "Apply",
                           const Color(0xFF1D97D4),
-                          () => Navigator.pop(context, true),
+                              () => Navigator.pop(context, true),
                         ),
                       ],
                     ),
@@ -194,14 +197,12 @@ class _FilterScreenState extends State<FilterScreen> {
     );
   }
 
-  Widget _buildRangeSliderBox(
-    String title,
-    RangeValues values,
-    double min,
-    double max,
-    ValueChanged<RangeValues> onChanged,
-    String unit,
-  ) {
+  Widget _buildRangeSliderBox(String title,
+      RangeValues values,
+      double min,
+      double max,
+      ValueChanged<RangeValues> onChanged,
+      String unit,) {
     return _buildBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -261,15 +262,16 @@ class _FilterScreenState extends State<FilterScreen> {
           Wrap(
             spacing: 10,
             children:
-                ["Women", "Men"]
-                    .map(
-                      (label) => _buildToggleButton(
-                        label,
-                        _selectedGender,
-                        onTap: () => setState(() => _selectedGender = label),
-                      ),
-                    )
-                    .toList(),
+            ["Women", "Men"]
+                .map(
+                  (label) =>
+                  _buildToggleButton(
+                    label,
+                    _selectedGender,
+                    onTap: () => setState(() => _selectedGender = label),
+                  ),
+            )
+                .toList(),
           ),
         ],
       ),
@@ -304,16 +306,17 @@ class _FilterScreenState extends State<FilterScreen> {
             spacing: 10,
             runSpacing: 10,
             children:
-                religions
-                    .map(
-                      (religion) => _buildToggleButton(
-                        religion,
-                        _selectedReligion,
-                        onTap:
-                            () => setState(() => _selectedReligion = religion),
-                      ),
-                    )
-                    .toList(),
+            religions
+                .map(
+                  (religion) =>
+                  _buildToggleButton(
+                    religion,
+                    _selectedReligion,
+                    onTap:
+                        () => setState(() => _selectedReligion = religion),
+                  ),
+            )
+                .toList(),
           ),
         ],
       ),
@@ -332,7 +335,7 @@ class _FilterScreenState extends State<FilterScreen> {
             _selectedCity,
             cities,
             Icons.location_on,
-            (val) => setState(() => _selectedCity = val!),
+                (val) => setState(() => _selectedCity = val!),
           ),
           _verticalSpacing(16),
           Text("Region", style: _titleTextStyle()),
@@ -342,26 +345,24 @@ class _FilterScreenState extends State<FilterScreen> {
             _selectedRegion,
             regions,
             null,
-            (val) => setState(() => _selectedRegion = val!),
+                (val) => setState(() => _selectedRegion = val!),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildDropdown(
-    String hint,
-    String value,
-    List<String> items,
-    IconData? icon,
-    ValueChanged<String?> onChanged,
-  ) {
+  Widget _buildDropdown(String hint,
+      String value,
+      List<String> items,
+      IconData? icon,
+      ValueChanged<String?> onChanged,) {
     return DropdownButtonFormField<String>(
       value: value.isEmpty ? null : value,
       icon: const Icon(Icons.arrow_drop_down, color: Colors.black),
       decoration: InputDecoration(
         prefixIcon:
-            icon != null ? Icon(icon, color: const Color(0xFF1D97D4)) : null,
+        icon != null ? Icon(icon, color: const Color(0xFF1D97D4)) : null,
         hintText: hint,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 12,
@@ -370,9 +371,9 @@ class _FilterScreenState extends State<FilterScreen> {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),
       items:
-          items
-              .map((item) => DropdownMenuItem(value: item, child: Text(item)))
-              .toList(),
+      items
+          .map((item) => DropdownMenuItem(value: item, child: Text(item)))
+          .toList(),
       onChanged: onChanged,
     );
   }
@@ -405,11 +406,10 @@ class _FilterScreenState extends State<FilterScreen> {
     );
   }
 
-  Widget _buildToggleButton(
-    String label,
-    String selected, {
-    VoidCallback? onTap,
-  }) {
+  Widget _buildToggleButton(String label,
+      String selected, {
+        VoidCallback? onTap,
+      }) {
     final isSelected = label == selected;
     return GestureDetector(
       onTap: onTap,
@@ -468,15 +468,16 @@ class _FilterScreenState extends State<FilterScreen> {
             spacing: 10,
             runSpacing: 10,
             children:
-                options
-                    .map(
-                      (option) => _buildToggleButton(
-                        option,
-                        selected,
-                        onTap: () => onSelect(option),
-                      ),
-                    )
-                    .toList(),
+            options
+                .map(
+                  (option) =>
+                  _buildToggleButton(
+                    option,
+                    selected,
+                    onTap: () => onSelect(option),
+                  ),
+            )
+                .toList(),
           ),
         ],
       ),

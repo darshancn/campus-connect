@@ -65,7 +65,7 @@ class RejectedByMeTab extends StatelessWidget {
               context,
               PageRouteBuilder(
                 transitionDuration: const Duration(milliseconds: 150),
-                pageBuilder: (_, __, ___) => const ExploreDetailScreen(),
+                pageBuilder: (_, __, ___) =>  ExploreDetailScreen(imagePath: user['image']!,),
               ),
             );
           },
