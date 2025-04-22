@@ -8,12 +8,7 @@ final List<Map<String, dynamic>> users = [
   {'tag': 'gold', 'name': 'James Smith', 'age': '32', 'distance': '2.8 km'},
   {'tag': 'premium', 'name': 'Anna Lee', 'age': '26', 'distance': '0.8 km'},
   {'tag': 'gold', 'name': 'Robert Brown', 'age': '35', 'distance': '3.0 km'},
-  {
-    'tag': 'premium',
-    'name': 'Linda Johnson',
-    'age': '29',
-    'distance': '1.9 km',
-  },
+  {'tag': 'premium','name': 'Linda Johnson','age': '29','distance': '1.9 km',},
   {'tag': 'gold', 'name': 'David Wilson', 'age': '31', 'distance': '2.5 km'},
 ];
 

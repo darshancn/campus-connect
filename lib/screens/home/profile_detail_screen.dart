@@ -666,7 +666,7 @@ class _PageDetailsScreenState extends State<PageDetailsScreen>
             right: 0,
             child: Center(
               child: Container(
-                width: screenWidth * 0.9 > 400 ? 400 : screenWidth * 0.9,
+                width: screenWidth * 0.9 > 400 ? 400 : screenWidth * 0.93,
                 height: 70,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -713,14 +713,14 @@ class _PageDetailsScreenState extends State<PageDetailsScreen>
                               borderRadius: BorderRadius.circular(42),
                             ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 Icon(
                                   Icons.chat_bubble,
                                   size: 16,
                                   color: Colors.white,
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 8),
                                 Text(
                                   'Send Message',
                                   style: TextStyle(
@@ -736,7 +736,7 @@ class _PageDetailsScreenState extends State<PageDetailsScreen>
                           ),
                         ),
                       ),
-                      const SizedBox(width: 6),
+                      const SizedBox(width: 5),
                       // Reject Button (shows error toast)
                       Flexible(
                         flex: 4,
@@ -744,13 +744,13 @@ class _PageDetailsScreenState extends State<PageDetailsScreen>
                           onTap: () => showErrorToast(context),
                           child: Container(
                             height: 52,
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
                             decoration: BoxDecoration(
                               color: const Color(0xFFD31F34),
                               borderRadius: BorderRadius.circular(42),
                             ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
                                 CircleAvatar(
                                   backgroundColor: Colors.transparent,
@@ -777,7 +777,7 @@ class _PageDetailsScreenState extends State<PageDetailsScreen>
                           ),
                         ),
                       ),
-                      const SizedBox(width: 6),
+                      const SizedBox(width: 5),
                       // Circular Blue Button (shows success toast)
                       Flexible(
                         flex: 2,

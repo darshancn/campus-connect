@@ -25,7 +25,7 @@ class HomeTab1 extends StatelessWidget {
         centerTitle: true,
         flexibleSpace: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
