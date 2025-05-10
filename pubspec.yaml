@@ -30,16 +30,25 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  image_picker: ^0.8.6+1
+  provider: ^6.0.5
+  shared_preferences: ^2.2.2
+  flutter_map: ^6.0.0
+  latlong2: ^0.9.1
+  geolocator: ^10.1.0
+  flutter_screenutil: ^5.0.0+3
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  font_awesome_flutter: ^10.7.0
+  flutter_svg: ^2.0.9
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_svg: ^2.0.9
   toastification: ^1.1.2
+  shared_preferences: ^2.2.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -91,11 +100,81 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 
   assets:
-    - assets/images/campus_logo_splash_screen.svg
+    - assets/images/splash_Screen.svg
     - assets/images/campus_logo.svg
+    - assets/images/image_no1.png
     - assets/images/google_icon.svg
     - assets/images/facebook_icon.svg
     - assets/images/success_toast_icon.svg
+    - assets/images/filter_icon.svg
+    - assets/images/map_icon.svg
+    - assets/images/gift.svg
+    - assets/images/sample_image1.png
+    - assets/images/sample_image2.png
+    - assets/images/sample_image3.png
+    - assets/images/gold_member_icon.svg
+    - assets/images/friendship.svg
+    - assets/images/relation_sought.svg
+    - assets/images/swimming.svg
+    - assets/images/photography.svg
+    - assets/images/book.svg
+    - assets/images/music.svg
+    - assets/images/cricket.svg
+    - assets/images/green_tick.svg
+    - assets/images/interests_icon.svg
+    - assets/images/gallery_image1.png
+    - assets/images/gallery_image2.png
+    - assets/images/gallery_image3.png
+    - assets/images/person_add.svg
+    - assets/images/reject_request.svg
+    - assets/images/success_request.svg
+    - assets/images/chat_image1.png
+    - assets/images/chat_image2.png
+    - assets/images/chat_image3.png
+    - assets/images/chat_image4.png
+    - assets/images/chat_image5.png
+    - assets/images/chat_image6.png
+    - assets/images/publication_image1.png
+    - assets/images/publication_image2.png
+    - assets/images/publication_image3.png
+    - assets/images/share_icon.svg
+    - assets/images/advertisement_image1.png
+    - assets/images/Ellipse_1.png
+    - assets/images/new_match1.png
+    - assets/images/new_match2.png
+    - assets/images/new_match3.png
+    - assets/images/new_match4.png
+    - assets/images/new_match5.png
+    - assets/images/new_match6.png
+    - assets/images/crown_black.png
+    - assets/images/crown_white.png
+    - assets/images/like_me1.png
+    - assets/images/like_me2.png
+    - assets/images/like_by_me1.png
+    - assets/images/like_by_me2.png
+    - assets/images/like_by_me3.png
+    - assets/images/like_by_me4.png
+    - assets/images/match_profile.png
+    - assets/images/match_profile2.png
+    - assets/images/match_profile3.png
+    - assets/images/match_profile4.png
+    - assets/images/match_profile5.png
+    - assets/images/match_profile6.png
+    - assets/images/favourite1.png
+    - assets/images/favourite2.png
+    - assets/images/favourite3.png
+    - assets/images/favourite4.png
+    - assets/images/favourite5.png
+    - assets/images/favourite6.png
+    - assets/images/rejected_user1.png
+    - assets/images/rejected_user2.png
+    - assets/images/rejected_user3.png
+    - assets/images/rejected_user4.png
+    - assets/images/default.png
+    - assets/images/badge1.png
+    - assets/images/reward1.png
+    - assets/images/trophy-star 1.png
+    - assets/images/super 1.png
 
   fonts:
     - family: Inter
@@ -105,4 +184,6 @@ flutter:
           weight: 700
         - asset: assets/fonts/Inter-Medium.ttf
           weight: 500
+
+
 

@@ -7,7 +7,7 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
@@ -15,27 +15,29 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginScreen()),
-      );
+      Navigator.of(context).pushReplacement(_createFadeRoute());
     });
+  }
+
+  Route _createFadeRoute() {
+    return PageRouteBuilder(
+      pageBuilder:
+          (context, animation, secondaryAnimation) => const LoginScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+      transitionDuration: const Duration(milliseconds: 1000),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1D97D4), // Background color
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              'assets/images/campus_logo_splash_screen.svg',
-              width: 188, // Adjust size as needed
-            ),
-            const SizedBox(height: 20),
-          ],
+      backgroundColor: const Color(0xFF1D97D4),
+      body: SizedBox.expand(
+        child: SvgPicture.asset(
+          'assets/images/splash_Screen.svg',
+          fit: BoxFit.cover,
         ),
       ),
     );
